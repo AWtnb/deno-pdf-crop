@@ -24,10 +24,10 @@ const cropTrimbox = async (
     const mbox = page.getMediaBox();
     const tbox = page.getTrimBox();
     if (rectanglesAreEqual(mbox, tbox)) {
-      console.log(`SKIP: page ${idx + 1} has no trimbox.`);
-      return;
+      console.log(`UNCHANGED: page ${idx + 1} has no trimbox.`);
+    } else {
+      page.setMediaBox(tbox.x, tbox.y, tbox.width, tbox.height);
     }
-    page.setMediaBox(tbox.x, tbox.y, tbox.width, tbox.height);
     outDoc.addPage(page);
   });
   const bytes = await outDoc.save();
