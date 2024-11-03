@@ -36,18 +36,15 @@ const cropTrimbox = async (
   return 0;
 };
 
-const main = () => {
+const main = async () => {
   const flags = parseArgs(Deno.args, {
     string: ["path"],
     default: {
       path: "",
     },
   });
-  cropTrimbox(
-    flags.path,
-  ).then((rc) => {
-    Deno.exit(rc);
-  });
+  const result = await cropTrimbox(flags.path);
+  Deno.exit(result);
 };
 
 main();
