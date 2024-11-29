@@ -27,6 +27,8 @@ const cropTrimbox = async (
       console.log(`UNCHANGED: page ${idx + 1} has no trimbox.`);
     } else {
       page.setMediaBox(tbox.x, tbox.y, tbox.width, tbox.height);
+      page.setCropBox(tbox.x, tbox.y, tbox.width, tbox.height);
+      page.setBleedBox(tbox.x, tbox.y, tbox.width, tbox.height);
     }
     outDoc.addPage(page);
   });
